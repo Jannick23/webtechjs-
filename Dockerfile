@@ -10,4 +10,4 @@ RUN ./gradlew build
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "java -jar build/libs/*.jar"]
+CMD ["java", "-jar", "build/libs/webtechjs-0.0.1-SNAPSHOT.jar"]
