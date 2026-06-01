@@ -7,13 +7,19 @@ import java.util.List;
 @RestController
 public class MovieController {
 
+    private final MovieRepository repository;
+
+    public MovieController(MovieRepository repository) {
+        this.repository = repository;
+    }
+
     @GetMapping("/movies")
     public List<Movie> getMovies() {
+        return repository.findAll();
+    }
 
-        return List.of(
-                new Movie(1L, "Inception", "Sci-Fi", 2010, "Watched"),
-                new Movie(2L, "Interstellar", "Sci-Fi", 2014, "Planned"),
-                new Movie(3L, "The Batman", "Action", 2022, "Watching")
-        );
+    @PostMapping("/movies")
+    public Movie createMovie(@RequestBody Movie movie) {
+        return repository.save(movie);
     }
 }
