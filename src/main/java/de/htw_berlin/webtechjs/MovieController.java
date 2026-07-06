@@ -22,4 +22,9 @@ public class MovieController {
     public Movie createMovie(@RequestBody Movie movie) {
         return repository.save(movie);
     }
+
+    @DeleteMapping("/movies/{id}")
+    public void deleteMovie(@PathVariable Long id) {
+        repository.deleteById(id);
+    }
 }
